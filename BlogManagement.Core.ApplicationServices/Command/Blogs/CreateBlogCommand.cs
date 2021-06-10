@@ -1,14 +1,9 @@
-﻿using BlogManagement.Core.Domain.Blogs;
-using System;
-using System.Collections.Generic;
+﻿using BlogManagement.Core.Domain.Domain;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BlogManagement.Core.ApplicationServices.Blogs
+namespace BlogManagement.Core.ApplicationServices.Command.Blogs
 {
-    public class AddBlogCommand
+    public class CreateBlogCommand
     {
         [Required]
         [StringLength(100, MinimumLength = 5)]
@@ -22,9 +17,9 @@ namespace BlogManagement.Core.ApplicationServices.Blogs
 
         public Blog ToBlog() => new Blog
         {
-            Name = this.Name,
-            Desciption = this.Desciption,
-            EnName = this.EnName
+            Name = Name,
+            Desciption = Desciption,
+            EnName = EnName
         };
 
     }

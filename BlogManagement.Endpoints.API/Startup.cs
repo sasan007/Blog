@@ -1,21 +1,14 @@
-using BlogManagement.Core.ApplicationServices.Blogs;
-using BlogManagement.Core.Domain.Blogs;
-using BlogManagement.Infra.Data.Sql.Blogs;
-using BlogManagement.Infra.Data.Sql.Common;
+using BlogManagement.Core.ApplicationServices.Service.Blogs;
+using BlogManagement.Core.Domain.Repository;
+using BlogManagement.Infra.Data.Sql.Context;
+using BlogManagement.Infra.Data.Sql.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogManagement.Endpoints.API
 {
@@ -39,7 +32,7 @@ namespace BlogManagement.Endpoints.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BlogManagement.Endpoints.API", Version = "v1" });
             });
 
-            services.AddDbContext<BlogManagementDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BlogManagementCnn")));
+            services.AddDbContext<EFDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BlogManagementCnn")));
             services.AddScoped<BlogRepository, EfBlogRepository>();
             services.AddScoped<BlogApplicaitonService>();
         }

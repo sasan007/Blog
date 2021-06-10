@@ -1,18 +1,16 @@
-﻿using BlogManagement.Core.Domain.Blogs;
-using BlogManagement.Infra.Data.Sql.Common;
-using System;
+﻿using BlogManagement.Core.Domain.Domain;
+using BlogManagement.Core.Domain.Repository;
+using BlogManagement.Infra.Data.Sql.Context;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BlogManagement.Infra.Data.Sql.Blogs
+namespace BlogManagement.Infra.Data.Sql.Implementation
 {
     public class EfBlogRepository : BlogRepository
     {
-        private readonly BlogManagementDbContext _blogManagementDb;
+        private readonly EFDbContext _blogManagementDb;
 
-        public EfBlogRepository(BlogManagementDbContext blogManagementDb)
+        public EfBlogRepository(EFDbContext blogManagementDb)
         {
             _blogManagementDb = blogManagementDb;
         }

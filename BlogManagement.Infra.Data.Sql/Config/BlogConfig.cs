@@ -1,8 +1,8 @@
-﻿using BlogManagement.Core.Domain.Blogs;
+﻿using BlogManagement.Core.Domain.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BlogManagement.Infra.Data.Sql.Blogs
+namespace BlogManagement.Infra.Data.Sql.Config
 {
     public class BlogConfig : IEntityTypeConfiguration<Blog>
     {
@@ -11,6 +11,8 @@ namespace BlogManagement.Infra.Data.Sql.Blogs
             builder.Property(c => c.Name).IsRequired().HasMaxLength(100);
             builder.Property(c => c.EnName).IsRequired().HasMaxLength(100);
             builder.Property(c => c.Desciption).IsRequired().HasMaxLength(500);
+
+            builder.ToTable("Blog");
         }
     }
 }

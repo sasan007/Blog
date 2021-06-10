@@ -1,20 +1,18 @@
-﻿using BlogManagement.Core.ApplicationServices.Blogs;
-using BlogManagement.Core.Domain.Blogs;
+﻿using BlogManagement.Core.ApplicationServices.Command.Blogs;
+using BlogManagement.Core.ApplicationServices.Service.Blogs;
+using BlogManagement.Core.Domain.Domain;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BlogManagement.Endpoints.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class BlogsController : ControllerBase
+    public class BlogController : ControllerBase
     {
         private readonly BlogApplicaitonService _blogApplicaitonService;
 
-        public BlogsController(BlogApplicaitonService blogApplicaitonService)
+        public BlogController(BlogApplicaitonService blogApplicaitonService)
         {
             _blogApplicaitonService = blogApplicaitonService;
         }
@@ -31,16 +29,16 @@ namespace BlogManagement.Endpoints.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(AddBlogCommand blogForAdd)
+        public IActionResult Add(CreateBlogCommand command)
         {
-            _blogApplicaitonService.Add(blogForAdd);
+            _blogApplicaitonService.Add(command);
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(RemoveBlogCommand command)
         {
-            _blogApplicaitonService.Remove(id);
+            _blogApplicaitonService.Remove(command);
             return NoContent();
         }
     }

@@ -1,9 +1,9 @@
-﻿using BlogManagement.Core.Domain.Blogs;
-using System;
+﻿using BlogManagement.Core.ApplicationServices.Command.Blogs;
+using BlogManagement.Core.Domain.Domain;
+using BlogManagement.Core.Domain.Repository;
 using System.Collections.Generic;
-using System.Text;
 
-namespace BlogManagement.Core.ApplicationServices.Blogs
+namespace BlogManagement.Core.ApplicationServices.Service.Blogs
 {
     public class BlogApplicaitonService
     {
@@ -14,9 +14,9 @@ namespace BlogManagement.Core.ApplicationServices.Blogs
             _blogRepository = blogRepository;
         }
 
-        public void Add(AddBlogCommand blogCommand)
+        public void Add(CreateBlogCommand command)
         {
-            _blogRepository.Add(blogCommand.ToBlog());
+            _blogRepository.Add(command.ToBlog());
         }
 
         public Blog Get(int blogId)
@@ -29,9 +29,9 @@ namespace BlogManagement.Core.ApplicationServices.Blogs
             return _blogRepository.Get();
         }
 
-        public void Remove(int blogId)
+        public void Remove(RemoveBlogCommand command)
         {
-            _blogRepository.Remove(blogId);
+            _blogRepository.Remove(command.Id);
         }
     }
 }

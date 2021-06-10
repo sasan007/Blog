@@ -1,10 +1,7 @@
-﻿using System;
+﻿using BlogManagement.Core.Domain.Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BlogManagement.Core.Domain.Blogs
+namespace BlogManagement.Core.Domain.Repository
 {
     public interface BlogRepository
     {
