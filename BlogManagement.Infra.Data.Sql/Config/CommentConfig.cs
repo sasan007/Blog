@@ -9,6 +9,7 @@ namespace BlogManagement.Infra.Data.Sql.Config
         public void Configure(EntityTypeBuilder<Comment> builder)
         {
             builder.Property(c => c.Text).IsRequired().HasMaxLength(300);
+            builder.Property(p => p.RowVersion).IsConcurrencyToken();
 
             builder.HasOne(p => p.Post).WithMany(b => b.Comments);
 

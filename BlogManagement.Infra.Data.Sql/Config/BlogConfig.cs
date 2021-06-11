@@ -11,6 +11,7 @@ namespace BlogManagement.Infra.Data.Sql.Config
             builder.Property(c => c.Name).IsRequired().HasMaxLength(100);
             builder.Property(c => c.EnName).IsRequired().HasMaxLength(100);
             builder.Property(c => c.Desciption).IsRequired().HasMaxLength(500);
+            builder.Property(p => p.RowVersion).IsConcurrencyToken();
 
             builder.ToTable("Blog");
         }
