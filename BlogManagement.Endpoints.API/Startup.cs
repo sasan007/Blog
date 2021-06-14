@@ -1,5 +1,6 @@
 using BlogManagement.Core.ApplicationServices.Service.Blogs;
 using BlogManagement.Core.Domain.Repository;
+using BlogManagement.Endpoints.API.Middleware;
 using BlogManagement.Infra.Data.Sql.Context;
 using BlogManagement.Infra.Data.Sql.Implementation;
 using Microsoft.AspNetCore.Builder;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 namespace BlogManagement.Endpoints.API
 {
@@ -50,6 +52,10 @@ namespace BlogManagement.Endpoints.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseSerilogRequestLogging();
+
+            app.UseMiddleware<LoggingMiddleware>();
 
             app.UseAuthorization();
 

@@ -10,27 +10,32 @@ namespace Golrang.Framework.Infra
 {
     public abstract class BaseDbContext : DbContext
     {
+        private DbContext _dbContext;
         public BaseDbContext(DbContextOptions options)
-        : base(options)
         {
+            _dbContext = new DbContext(options);
         }
         public override EntityEntry Add(object entity)
         {
-            base.Add(entity);
-            base.SaveChanges();
+            _dbContext.Add(entity);
+            _dbContext.SaveChanges();
             return Entry(entity);
         }
         public override EntityEntry Update(object entity)
         {
-            base.Update(entity);
-            base.SaveChanges();
+            _dbContext.Update(entity);
+            _dbContext.SaveChanges();
             return Entry(entity);
         }
         public override EntityEntry Remove(object entity)
         {
-            base.Remove(entity);
-            base.SaveChanges();
+            _dbContext.Remove(entity);
+            _dbContext.SaveChanges();
             return Entry(null);
+        }
+
+        public virtual void OnModelCreating(ModelBuilder modelBuilder)
+        {
         }
     }
 }
