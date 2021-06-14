@@ -1,5 +1,5 @@
 ﻿using BlogManagement.Core.ApplicationServices.Command.Blogs;
-using BlogManagement.Core.ApplicationServices.Service.Blogs;
+using BlogManagement.Core.ApplicationServices.Service;
 using BlogManagement.Core.Domain.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

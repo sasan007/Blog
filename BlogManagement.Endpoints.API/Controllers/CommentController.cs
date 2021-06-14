@@ -1,6 +1,6 @@
 ﻿using BlogManagement.Core.ApplicationServices.Command.Comments;
+using BlogManagement.Core.ApplicationServices.Service;
 using BlogManagement.Core.Domain.Domain;
-using CommentManagement.Core.ApplicationServices.Service.Comments;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 

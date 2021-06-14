@@ -34,8 +34,5 @@ namespace Golrang.Framework.Infra
             return Entry(null);
         }
 
-        public virtual void OnModelCreating(ModelBuilder modelBuilder)
-        {
-        }
     }
 }
