@@ -4,7 +4,7 @@ using BlogManagement.Infra.Data.Sql.Context;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PostManagement.Infra.Data.Sql.Implementation
+namespace BlogManagement.Infra.Data.Sql.Implementation
 {
     public class EfPostRepository : PostRepository
     {

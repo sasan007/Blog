@@ -3,7 +3,7 @@ using BlogManagement.Core.Domain.Domain;
 using BlogManagement.Core.Domain.Repository;
 using System.Collections.Generic;
 
-namespace PostManagement.Core.ApplicationServices.Service.Posts
+namespace BlogManagement.Core.ApplicationServices.Service
 {
     public class PostApplicaitonService
     {

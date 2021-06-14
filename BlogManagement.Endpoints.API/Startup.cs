@@ -1,4 +1,4 @@
-using BlogManagement.Core.ApplicationServices.Service.Blogs;
+using BlogManagement.Core.ApplicationServices.Service;
 using BlogManagement.Core.Domain.Repository;
 using BlogManagement.Endpoints.API.Middleware;
 using BlogManagement.Infra.Data.Sql.Context;
@@ -35,8 +35,14 @@ namespace BlogManagement.Endpoints.API
             });
 
             services.AddDbContext<EFDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BlogManagementCnn")));
+            
             services.AddScoped<BlogRepository, EfBlogRepository>();
+            services.AddScoped<PostRepository, EfPostRepository>();
+            services.AddScoped<CommentRepository, EfCommentRepository>();
+
             services.AddScoped<BlogApplicaitonService>();
+            services.AddScoped<PostApplicaitonService>();
+            services.AddScoped<CommentApplicaitonService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
