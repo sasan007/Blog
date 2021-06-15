@@ -9,5 +9,6 @@ namespace BlogManagement.Core.Domain.Domain
         public string Content { get; set; }
         public Blog Blog { get; set; }
         public List<Comment> Comments{ get; set; }
+        public List<Review> Reviews { get; set; }
     }
 }
