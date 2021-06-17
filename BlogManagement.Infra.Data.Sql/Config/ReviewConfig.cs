@@ -4,16 +4,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BlogManagement.Infra.Data.Sql.Config
 {
-    public class CommentConfig : IEntityTypeConfiguration<Comment>
+    public class ReviewConfig : IEntityTypeConfiguration<Review>
     {
-        public void Configure(EntityTypeBuilder<Comment> builder)
+        public void Configure(EntityTypeBuilder<Review> builder)
         {
-            builder.Property(c => c.Text).IsRequired().HasMaxLength(300);
             builder.Property(c => c.PostId).IsRequired();
             builder.Property(p => p.RowVersion).IsConcurrencyToken();
 
-            builder.HasOne(p => p.Post).WithMany(b => b.Comments).HasForeignKey(f => f.PostId);
-            builder.ToTable("Comment");
+            builder.HasOne(p => p.Post).WithMany(b => b.Reviews).HasForeignKey(f => f.PostId);
+            builder.ToTable("Review");
         }
     }
 }

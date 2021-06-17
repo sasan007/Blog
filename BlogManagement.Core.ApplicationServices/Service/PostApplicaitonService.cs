@@ -7,34 +7,39 @@ namespace BlogManagement.Core.ApplicationServices.Service
 {
     public class PostApplicaitonService
     {
-        private readonly PostRepository _PostRepository;
+        private readonly PostRepository _postRepository;
+        private readonly ReviewRepository _reviewRepository;
 
-        public PostApplicaitonService(PostRepository PostRepository)
+        public PostApplicaitonService(PostRepository postRepository,ReviewRepository reviewRepository)
         {
-            _PostRepository = PostRepository;
+            _postRepository = postRepository;
+            _reviewRepository = reviewRepository;
         }
 
         public void Create(CreatePostCommand command)
         {
-            _PostRepository.Add(command.ToPost());
+            _postRepository.Add(command.ToPost());
         }
         public void Update(UpdatePostCommand command)
         {
-            _PostRepository.Update(command.ToPost());
+            _postRepository.Update(command.ToPost());
         }
         public Post Get(int PostId)
         {
-            return _PostRepository.Get(PostId);
+            var post = _postRepository.Get(PostId);
+            _reviewRepository.Add(new CreateReviewCommand(post.Id).ToReview());
+            return post;
+
         }
 
         public List<Post> Get()
         {
-            return _PostRepository.Get();
+            return _postRepository.Get();
         }
 
         public void Remove(RemovePostCommand command)
         {
-            _PostRepository.Remove(command.Id);
+            _postRepository.Remove(command.Id);
         }
     }
 }
