@@ -8,6 +8,6 @@ namespace BlogManagement.Core.Domain.Domain
         public string Name { get; set; }
         public string EnName { get; set; }
         public string Desciption { get; set; }
-        public List<Post> Posts { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
     }
 }
